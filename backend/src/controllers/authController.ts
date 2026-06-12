@@ -49,6 +49,8 @@ const getMe = (req: Request, res: Response) => {
 const logout = async (req: Request, res: Response) => {
   res.cookie('jwt', '', {
     httpOnly: true,
+    secure: true,
+    sameSite: 'none',
     expires: new Date(0),
   });
   res.status(200).json({

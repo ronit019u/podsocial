@@ -17,8 +17,8 @@ export const generateToken = (userId: User['id'], res: Response): string => {
   res.cookie('jwt', token, {
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',
-    sameSite: 'strict',
-    maxAge: 1000 * 60 * 60 * 24 * 7,
+    sameSite: 'none',
+    maxAge: 24 * 60 * 60 * 1000,
   });
   return token;
 };
