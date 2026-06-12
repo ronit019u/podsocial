@@ -8,7 +8,6 @@ export interface AuthContextType {
   user: User | null;
   login: (userData: User) => void;
   logout: () => Promise<void>;
-  isLoading: boolean;
 }
 
 export interface Register {
