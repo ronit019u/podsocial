@@ -1,0 +1,87 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String   @id @default(uuid())
+  name         String
+  email        String   @unique
+  password     String
+  createdAt    DateTime @default(now())
+
+  posts     Post[]
+  likes     Like[]
+  comments  Comment[]
+  messages  Message[]
+  chatsAsUserOne     Chat[] @relation("ChatUserOne")
+  chatsAsUserTwo     Chat[] @relation("ChatUserTwo")
+}
+
+model Post {
+  id             String   @id @default(uuid())
+  title          String
+  coverImage     String
+  description    String
+  totalEpisodes  Int 
+  createdAt      DateTime @default(now())
+
+  userId     String
+  user       User     @relation(fields: [userId], references: [id])
+
+  likes      Like[]
+  comments   Comment[]
+}
+
+model Like {
+  id      String @id @default(uuid())
+
+     userId  String
+     postId  String
+  createdAt  DateTime @default(now())
+  user    User @relation(fields: [userId], references: [id])
+  post    Post @relation(fields: [postId], references: [id])
+
+  @@unique([userId, postId]) // prevents double like
+}
+
+model Comment {
+  id        String   @id @default(uuid())
+  content   String
+  createdAt DateTime @default(now())
+
+  userId    String
+  postId    String
+
+  user      User @relation(fields: [userId], references: [id])
+  post      Post @relation(fields: [postId], references: [id])
+}
+
+model Message {
+  id        String @id @default(uuid())
+  text      String
+  createdAt DateTime @default(now())
+
+  userId    String
+  chatId    String
+  
+  user      User @relation(fields: [userId], references: [id])
+  chat      Chat @relation(fields: [chatId], references: [id])
+}
+
+model Chat {
+  id       String @id @default(uuid())
+  createdAt DateTime @default(now())
+  
+  userOneId String
+  userTwoId String
+  userOne   User @relation("ChatUserOne", fields: [userOneId], references: [id])
+  userTwo User @relation("ChatUserTwo", fields: [userTwoId], references: [id])
+  messages Message[]
+
+  @@unique([userOneId, userTwoId])
+}
