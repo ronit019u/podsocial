@@ -39,7 +39,7 @@ export const MessagePage = () => {
         /*telling backend socket wht chat is user inside */
         socket.emit("joinChat", chatId);
 
-        const handleNewText = (newMessage: Message) => {
+        const handleNewText = () => {
             queryClient.invalidateQueries({queryKey: ["messages", chatId]})
         }
 
@@ -90,7 +90,7 @@ export const MessagePage = () => {
             />
             <div className="flex items-center justify- ">
             <Button variant="ghost" className="text-white hover:text-blue-400"
-              onClick={() => messageMutation.mutate({chatId, text})}
+              onClick={() => messageMutation.mutate({chatId: chatId!, text})}
               disabled={messageMutation.isPending || text.trim().length === 0}
             >
                 Send <Send />

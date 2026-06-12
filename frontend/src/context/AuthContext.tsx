@@ -36,7 +36,7 @@ export const AuthProvider = ({ children }: {children: React.ReactNode}) => {
 
     // only cares about user nothing else 
     return (
-        <AuthContext.Provider value={{user: user ?? null, login, logout: logoutUser, isLoading}}>
+        <AuthContext.Provider value={{user: user ?? null, login, logout: logoutUser}}>
             {children}
         </AuthContext.Provider>
     )

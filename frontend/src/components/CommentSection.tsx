@@ -6,7 +6,7 @@ import { useAuth } from "@/context/AuthContext"
 import type { CommentResponse } from "@/types"
 import { createChat } from "@/service/chatServices"
 import { useNavigate } from "react-router-dom"
-import { ChartBarIcon, MessageCircle, Send, Trash, Trash2 } from "lucide-react"
+import {  MessageCircle, Send, Trash2 } from "lucide-react"
 
 interface Props {
     postId: string
@@ -17,7 +17,6 @@ export const CommentSection = ({postId}: Props) => {
 
     const { user } =useAuth()
     const [content, setContent ] = useState("");
-    const [OtherUserId, setOtherUserId] = useState("");
 
     const queryClient = useQueryClient();
     const navigate = useNavigate()
@@ -49,7 +48,6 @@ export const CommentSection = ({postId}: Props) => {
         onSuccess: 
             (data) => { 
             queryClient.invalidateQueries({queryKey: ["chats"]});
-            setOtherUserId("")
             navigate(`/chat/${data.id}`)
         }
     })

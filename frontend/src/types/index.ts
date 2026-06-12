@@ -8,7 +8,7 @@ export interface AuthContextType {
   user: User | null;
   login: (userData: User) => void;
   logout: () => Promise<void>;
-  laoding: boolean;
+  isLoading: boolean;
 }
 
 export interface Register {
@@ -21,7 +21,6 @@ export interface Login {
   email: string;
   password: string;
 }
-
 
 export interface TaddyPodcast {
   uuid: string;
@@ -41,7 +40,7 @@ export interface PostResponse {
   createdAt: string;
   userId: string;
   user: User;
-  likes: number;
+  likes: { id: string; userId: string }[];
 }
 
 export interface Comment {
@@ -59,8 +58,8 @@ export interface Chat {
   id: string;
   userOneId: string;
   userTwoId: string;
-  userOne: {id: string, name: string}
-  userTwo: {id: string, name: string}
+  userOne: { id: string; name: string };
+  userTwo: { id: string; name: string };
 }
 
 export interface Message {
@@ -70,5 +69,4 @@ export interface Message {
   chatId: string;
   createdAt: string;
   user: User;
-  
 }

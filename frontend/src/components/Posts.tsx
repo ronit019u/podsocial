@@ -1,6 +1,7 @@
 import { getPosts } from "@/service/podcastService"
 import { useQuery } from "@tanstack/react-query"
 import { PostCard } from "./PostCard"
+import type { PostResponse } from "@/types"
 
 export const Posts = () => {
 
@@ -14,7 +15,7 @@ export const Posts = () => {
     
     return (
         <div>
-             {posts?.map((post) => (
+             {posts?.map((post: PostResponse) => (
                 <PostCard key={post.id} post={post} />
              ))}
         </div>
