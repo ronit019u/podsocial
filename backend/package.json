@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "tsx watch src/index.ts",
-    "dev:watch": "nodemon --exec node --loader ts-node/esm src/index.ts",
+    "build": "prisma generate && tsc",
     "test": "vitest",
     "lint": "eslint . --ext .ts",
     "format": "prettier --write"
