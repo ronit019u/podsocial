@@ -10,7 +10,11 @@ import { formatDate } from "@/utility/dateHelper";
 import { useAuth } from "@/context/AuthContext";
 
 
-const socket = io(import.meta.env.VITE_API_URL, {withCredentials: true})
+const socket = io(import.meta.env.VITE_API_URL, {
+    withCredentials: true,
+    /* waste resources but the only way to show real time socket effect in render*/
+    transports: ["polling", "websocket"]
+})
 
 export const MessagePage = () => {
 
