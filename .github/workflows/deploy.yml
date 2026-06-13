@@ -46,6 +46,8 @@ jobs:
          - name: build
            working-directory: backend
            run: npm run build
+           env:
+             DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
 
           
