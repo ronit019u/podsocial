@@ -9,8 +9,11 @@ import { Card, CardContent, CardHeader } from "./ui/card";
 import { Label } from "./ui/label";
 
 import { UserPlus } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export const RegisterForm = () => {
+
+  const navigate = useNavigate()
   const [form, setForm] = useState<Register>({
     name: "",
     email: "",
@@ -19,6 +22,7 @@ export const RegisterForm = () => {
 
   const mutation = useMutation({
     mutationFn: register,
+    onSuccess: () => navigate("/login")
   });
 
   const handleSubmit = (e: React.FormEvent) => {
