@@ -3,7 +3,7 @@
 
 A full-stack social platform for podcast lovers — discover podcasts, share them with the community, like and comment on shares, and chat in real time with other users.
 
-**Live Demo:** https://podsocial.vercel.app/
+**Live Demo:** https://podsocial.vercel.app
 **Backend API:** [https://podsocial-backend.onrender.com](https://podsocial-backend.onrender.com)
 
 > Note: the backend is hosted on Render's free tier, so the first request after inactivity may take 30–60 seconds to wake up.
