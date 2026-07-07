@@ -168,10 +168,10 @@ All `/api/*` routes (and `/auth/me`, `/auth/logout`) require authentication via 
 ## 🗺️ Roadmap
 
 - [ ] User profile pages
-- [ ] Post descriptions/captions
+- [ ] nested comments
 - [ ] Notifications for likes/comments/messages
-- [ ] Pagination/infinite scroll for the feed
-- [ ] Upgrade hosting tier for stable WebSocket connections
+- [ ] frontend tests
+- [ ] complete backend tests
 
 ---
 
